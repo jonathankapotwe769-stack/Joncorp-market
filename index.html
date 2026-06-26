@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Boutique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏪 Gestion de Ma Boutique</h1>
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Produits</h3>
+                    <p id="totalProducts">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Bénéfices Totaux</h3>
+                    <p id="totalProfit">0 €</p>
+                </div>
+                <div class="stat-card alert">
+                    <h3>⚠️ Alertes Stock</h3>
+                    <p id="stockAlerts">0</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Formulaire d'ajout/modification -->
+            <div class="form-section">
+                <h2 id="formTitle">Ajouter un Produit</h2>
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    
+                    <div class="form-group">
+                        <label for="productName">Nom du produit *</label>
+                        <input type="text" id="productName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productImage">Image du produit</label>
+                        <input type="file" id="productImage" accept="image/*">
+                        <img id="imagePreview" src="" alt="Aperçu" style="display: none;">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="purchasePrice">Prix d'achat (€) *</label>
+                            <input type="number" id="purchasePrice" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sellingPrice">Prix de vente (€) *</label>
+                            <input type="number" id="sellingPrice" step="0.01" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="stock">Stock *</label>
+                            <input type="number" id="stock" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profit">Bénéfice unitaire</label>
+                            <input type="text" id="profit" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">💾 Enregistrer</button>
+                        <button type="button" class="btn btn-secondary" onclick="resetForm()">❌ Annuler</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Liste des produits -->
+            <div class="products-section">
+                <div class="products-header">
+                    <h2>📦 Mes Produits</h2>
+                    <input type="text" id="searchInput" placeholder="🔍 Rechercher un produit..." onkeyup="filterProducts()">
+                </div>
+                
+                <div id="productsList" class="products-grid">
+                    <!-- Les produits seront affichés ici -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal d'alerte stock -->
+        <div id="alertModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeAlert()">&times;</span>
+                <div class="alert-icon">⚠️</div>
+                <h2>Alerte Stock Bas</h2>
+                <div id="alertMessage"></div>
+                <button onclick="closeAlert()" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+</body>
+</html>
